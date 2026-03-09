@@ -146,7 +146,7 @@ export function Hero() {
 
       {/* Hero center: stacked on mobile, 3-column on desktop */}
       <div
-        className="flex min-h-screen w-full flex-col gap-8 px-6 py-24 md:flex-row md:items-center md:justify-between md:gap-0 md:px-10 md:py-24 lg:px-16"
+        className="flex min-h-screen w-full flex-col gap-0 px-6 pt-20 pb-28 md:flex-row md:items-center md:justify-between md:gap-0 md:px-10 md:py-24 lg:px-16"
         style={{ position: "relative", zIndex: 10 }}
       >
         {/* Title: top on mobile, left on desktop */}
@@ -170,7 +170,7 @@ export function Hero() {
 
         {/* Center: spacer so Spline visible and bio doesn't overlap (mobile); desktop 35vw square */}
         <div
-          className="min-h-[50vh] shrink-0 md:block md:h-[35vw] md:min-h-0 md:w-[35vw]"
+          className="min-h-[36vh] shrink-0 md:block md:h-[35vw] md:min-h-0 md:w-[35vw]"
           aria-hidden
         />
 
