@@ -1,8 +1,6 @@
 # Andre Rasi — Portfolio
 
-Personal portfolio website built with Next.js 14, 
-TypeScript, Tailwind CSS, GSAP animations and 
-Spline 3D.
+My personal portfolio. Built to feel premium, not templated.
 
 ## Tech Stack
 - Next.js 14 + TypeScript
