@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+  --foreground-muted: #b9b9b9;
+  --accent: #700000;
+  --accent-hover: #a00000;
+}
+
+body {
+  color: #b9b9b9;
+  background: #000000;
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+
+/* Hide Spline watermark/badge */
+[data-spline-tooltip],
+#logo,
+a[href*="spline.design"] {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+strong {
+  color: #ffffff !important;
+  font-weight: 700;
+}
+
+button.hover-underline,
+a.hover-underline {
+  color: #b9b9b9;
+  cursor: pointer;
+  position: relative;
+  border: none;
+  background: none;
+  text-transform: uppercase;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: color;
+  padding: 0;
+  text-decoration: none !important;
+  display: inline-block;
+}
+button.hover-underline:hover,
+a.hover-underline:hover {
+  color: #ffffff !important;
+}
+button.hover-underline::after,
+a.hover-underline::after {
+  content: "";
+  pointer-events: none;
+  bottom: -2px;
+  left: 50%;
+  position: absolute;
+  width: 0%;
+  height: 1px;
+  background-color: #ffffff;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: width, left;
+}
+button.hover-underline:hover::after,
+a.hover-underline:hover::after {
+  width: 100%;
+  left: 0%;
+}
+
