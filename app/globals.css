@@ -26,10 +26,12 @@ body {
   }
 }
 
-/* Hide Spline watermark/badge */
+/* Hide Spline watermark */
 [data-spline-tooltip],
 #logo,
-a[href*="spline.design"] {
+a[href*="spline.design"],
+canvas + div,
+.spline-watermark {
   display: none !important;
   opacity: 0 !important;
   pointer-events: none !important;

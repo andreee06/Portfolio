@@ -72,11 +72,6 @@ export function Hero() {
     <section
       ref={heroRef}
       className="relative min-h-screen w-full overflow-x-hidden overflow-y-auto bg-transparent md:h-screen md:overflow-hidden"
-      style={{
-        position: "relative",
-        width: "100vw",
-        background: "transparent",
-      }}
     >
       {/* Full-viewport Spline background (behind all content) */}
       <HeroCanvas />
@@ -84,8 +79,7 @@ export function Hero() {
       {/* Top bar */}
       <header
         data-gsap="top-bar"
-        className="fixed top-0 left-0 right-0 w-full px-6 py-4 md:px-8 md:py-5"
-        style={{ zIndex: 100, backgroundColor: "#000000", pointerEvents: "auto" }}
+        className="fixed top-0 left-0 right-0 w-full z-[100] bg-black pointer-events-auto px-6 py-4 md:px-8 md:py-5"
       >
         <div className="mx-auto flex max-w-[1600px] w-full items-start justify-between gap-6">
           {/* Far left: ANDRE / RASI */}
@@ -114,26 +108,17 @@ export function Hero() {
 
           {/* Far right: nav links */}
           <nav
-            className="flex flex-col items-end gap-1 font-mono text-xs text-body md:text-sm"
-            style={{ position: "relative", zIndex: 60 }}
+            className="relative z-[60] flex flex-col items-end gap-1 font-mono text-xs text-body md:text-sm"
           >
             <a
               href="/"
-              className="hover-underline"
-              style={{
-                cursor: "pointer",
-                position: "relative",
-                zIndex: 60,
-                fontWeight: "700",
-                color: "#ffffff",
-              }}
+              className="hover-underline relative z-[60] cursor-pointer font-bold text-white"
             >
               Home
             </a>
             <a
               href="#"
-              className="hover-underline"
-              style={{ cursor: "pointer", position: "relative", zIndex: 60 }}
+              className="hover-underline relative z-[60] cursor-pointer"
               aria-disabled="true"
               aria-label="Projects - Coming soon"
               onClick={(e) => e.preventDefault()}
@@ -146,8 +131,7 @@ export function Hero() {
 
       {/* Hero center: stacked on mobile, 3-column on desktop */}
       <div
-        className="flex min-h-screen w-full flex-col gap-0 px-6 pt-20 pb-40 md:flex-row md:items-center md:justify-between md:gap-0 md:px-10 md:py-24 lg:px-16"
-        style={{ position: "relative", zIndex: 10 }}
+        className="relative z-10 flex min-h-screen w-full flex-col gap-0 px-6 pt-20 pb-40 md:flex-row md:items-center md:justify-between md:gap-0 md:px-10 md:py-24 lg:px-16"
       >
         {/* Title: top on mobile, left on desktop */}
         <div className="flex w-full flex-col justify-center md:flex-1">
@@ -177,26 +161,11 @@ export function Hero() {
         {/* Bio: below on mobile, right on desktop */}
         <div className="flex w-full flex-1 justify-center md:justify-end">
           <div data-gsap="bio-para" className="max-w-full md:max-w-[410px]">
-            <p
-              style={{
-                marginBottom: "1.2em",
-                color: "#b9b9b9",
-                fontFamily: "var(--font-mono)",
-                fontSize: "0.75rem",
-                lineHeight: "1.7",
-              }}
-            >
+            <p className="font-mono text-[0.75rem] leading-[1.7] text-body mb-[1.2em]">
               Hi, I&apos;m Andre — a <strong>Software Developer</strong> and <strong>Cloud Engineer</strong>.
               Driven by curiosity, built on persistence.
             </p>
-            <p
-              style={{
-                color: "#b9b9b9",
-                fontFamily: "var(--font-mono)",
-                fontSize: "0.75rem",
-                lineHeight: "1.7",
-              }}
-            >
+            <p className="font-mono text-[0.75rem] leading-[1.7] text-body">
               I write code with <strong>music</strong> in my ears and a
               relentless need to figure things out.{" "}
               <strong>
@@ -211,8 +180,7 @@ export function Hero() {
       {/* Bottom bar */}
       <footer
         data-gsap="bottom-bar"
-        className="fixed bottom-0 left-0 right-0 w-full px-6 py-4 md:px-8 md:py-5"
-        style={{ zIndex: 10 }}
+        className="fixed bottom-0 left-0 right-0 z-10 w-full px-6 py-4 md:px-8 md:py-5"
       >
         <div className="mx-auto flex max-w-[1600px] w-full items-end justify-between gap-6">
           {/* Far left: local time */}
@@ -257,19 +225,6 @@ export function Hero() {
         </div>
       </footer>
 
-      {/* Cover Spline watermark in bottom-right corner */}
-      <div
-        style={{
-          position: "fixed",
-          bottom: 0,
-          right: 0,
-          width: "220px",
-          height: "60px",
-          background: "#000000",
-          zIndex: 5,
-          pointerEvents: "none",
-        }}
-      />
     </section>
   );
 }

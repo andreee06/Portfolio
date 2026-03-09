@@ -7,6 +7,9 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
   const rafRef = useRef<number>(0);
 
   useEffect(() => {
+    // Don't initialise Lenis on mobile — page is a single fixed viewport
+    if (window.innerWidth < 768) return;
+
     let mounted = true;
     const init = async () => {
       const Lenis = (await import("lenis")).default;
@@ -34,5 +37,5 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
-  return <div>{children}</div>;
+  return <>{children}</>;
 }
