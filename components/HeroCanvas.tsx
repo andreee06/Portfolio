@@ -33,17 +33,7 @@ export function HeroCanvas() {
   return (
     <div
       data-gsap="spline"
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100vw',
-        height: '100vh',
-        zIndex: 0,
-        pointerEvents: 'none',
-        background: 'transparent',
-        overflow: 'hidden',
-      }}
+      className="fixed inset-0 w-screen h-screen z-0 pointer-events-none bg-transparent overflow-hidden"
     >
       <Spline
         scene="https://prod.spline.design/5-Cv3fBqf9lox3Aw/scene.splinecode"
