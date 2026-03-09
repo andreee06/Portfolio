@@ -238,7 +238,7 @@ export function Hero() {
           {/* Far right: copyright + name */}
           <div className="text-right font-mono text-xs text-body md:text-sm">
             <div><strong>© 2026</strong></div>
-            <div><strong>ANDRE RASI</strong></div>
+            <div><strong>RASII</strong></div>
           </div>
         </div>
       </footer>
