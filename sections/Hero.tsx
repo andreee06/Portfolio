@@ -71,11 +71,10 @@ export function Hero() {
   return (
     <section
       ref={heroRef}
-      className="relative overflow-hidden"
+      className="relative min-h-screen w-full overflow-x-hidden overflow-y-auto bg-transparent md:h-screen md:overflow-hidden"
       style={{
         position: "relative",
         width: "100vw",
-        height: "100vh",
         background: "transparent",
       }}
     >
@@ -145,44 +144,39 @@ export function Hero() {
         </div>
       </header>
 
-      {/* Hero center: 3-column layout */}
+      {/* Hero center: stacked on mobile, 3-column on desktop */}
       <div
-        className="flex min-h-screen w-full items-center justify-between px-6 py-24 md:px-10 lg:px-16"
+        className="flex min-h-screen w-full flex-col gap-8 px-6 py-24 md:flex-row md:items-center md:justify-between md:gap-0 md:px-10 md:py-24 lg:px-16"
         style={{ position: "relative", zIndex: 10 }}
       >
-        {/* Far left: name heading */}
-        <div className="flex flex-1 flex-col justify-center">
+        {/* Title: top on mobile, left on desktop */}
+        <div className="flex w-full flex-col justify-center md:flex-1">
           <h1 className="leading-tight text-white">
             <span
               data-gsap="andre-text"
-              className="font-bonheur block"
-              style={{ fontSize: "clamp(1.8rem, 12vw, 8.5rem)" }}
+              className="font-bonheur block text-[15vw] md:text-[clamp(1.8rem,12vw,8.5rem)]"
             >
               Depth
             </span>
             <span
               data-gsap="rasi-text"
-              className="font-bebas block font-bold uppercase tracking-tight"
-              style={{
-                fontSize: "clamp(1.8rem, 12vw, 8.5rem)",
-                marginTop: "-0.15em",
-              }}
+              className="font-bebas block font-bold uppercase tracking-tight text-[12vw] md:text-[clamp(1.8rem,12vw,8.5rem)]"
+              style={{ marginTop: "-0.15em" }}
             >
               Explorer.
             </span>
           </h1>
         </div>
 
-        {/* Center column: spacer (Spline is full-viewport background) */}
+        {/* Center: spacer so Spline visible and bio doesn't overlap (mobile); desktop 35vw square */}
         <div
-          className="hidden shrink-0 md:block"
-          style={{ width: "35vw", height: "35vw" }}
+          className="min-h-[50vh] shrink-0 md:block md:h-[35vw] md:min-h-0 md:w-[35vw]"
           aria-hidden
         />
 
-        {/* Far right: bio paragraph */}
-        <div className="flex flex-1 justify-end">
-          <div data-gsap="bio-para" style={{ maxWidth: "410px" }}>
+        {/* Bio: below on mobile, right on desktop */}
+        <div className="flex w-full flex-1 justify-center md:justify-end">
+          <div data-gsap="bio-para" className="max-w-full md:max-w-[410px]">
             <p
               style={{
                 marginBottom: "1.2em",
