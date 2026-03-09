@@ -12,6 +12,8 @@ const HeroCanvas = dynamic(
 
 export function Hero() {
   const heroRef = useRef<HTMLElement>(null);
+  const splineLoadedRef = useRef(false);
+  const startAnimationRef = useRef<(() => void) | null>(null);
   const [localTime, setLocalTime] = useState("");
 
   useGSAP(
@@ -22,34 +24,35 @@ export function Hero() {
       gsap.set('[data-gsap="andre-text"]', { opacity: 0, y: 20 });
       gsap.set('[data-gsap="rasi-text"]', { opacity: 0, y: 20 });
       gsap.set('[data-gsap="bio-para"]', { opacity: 0, y: 15 });
+      gsap.set('[data-gsap="mobile-email"]', { opacity: 0, y: 15 });
       gsap.set('[data-gsap="bottom-bar"]', { opacity: 0, y: 20 });
 
-      const tl = gsap.timeline({ delay: 0.1 });
+      const tl = gsap.timeline({ paused: true });
 
-      // Mountain + sphere fade in
       tl.to('[data-gsap="spline"]', {
         opacity: 1,
         duration: 1.2,
         ease: "power2.out",
-      })
-        // Text elements fade in with micro-stagger
-        .to(
-          [
-            '[data-gsap="top-bar"]',
-            '[data-gsap="andre-text"]',
-            '[data-gsap="rasi-text"]',
-            '[data-gsap="bio-para"]',
-            '[data-gsap="bottom-bar"]',
-          ],
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.7,
-            ease: "power3.out",
-            stagger: 0.06,
-          },
-          "0.6"
-        );
+      }).to(
+        [
+          '[data-gsap="top-bar"]',
+          '[data-gsap="andre-text"]',
+          '[data-gsap="rasi-text"]',
+          '[data-gsap="mobile-email"]',
+          '[data-gsap="bio-para"]',
+          '[data-gsap="bottom-bar"]',
+        ],
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: "power3.out",
+          stagger: 0.06,
+        },
+        "0.6"
+      );
+
+      startAnimationRef.current = () => tl.play();
     },
     { scope: heroRef }
   );
@@ -74,7 +77,12 @@ export function Hero() {
       className="relative min-h-screen w-full overflow-x-hidden overflow-y-auto bg-transparent md:h-screen md:overflow-hidden"
     >
       {/* Full-viewport Spline background (behind all content) */}
-      <HeroCanvas />
+      <HeroCanvas
+        onLoad={() => {
+          splineLoadedRef.current = true;
+          startAnimationRef.current?.();
+        }}
+      />
 
       {/* Top bar */}
       <header
@@ -134,7 +142,7 @@ export function Hero() {
         className="relative z-10 flex min-h-screen w-full flex-col gap-0 px-6 pt-20 pb-40 md:flex-row md:items-center md:justify-between md:gap-0 md:px-10 md:py-24 lg:px-16"
       >
         {/* Title: top on mobile, left on desktop */}
-        <div className="flex w-full flex-col justify-center md:flex-1">
+        <div className="flex w-full flex-row items-end justify-between md:flex-col md:justify-center md:flex-1">
           <h1 className="leading-tight text-white">
             <span
               data-gsap="andre-text"
@@ -150,6 +158,16 @@ export function Hero() {
               Explorer.
             </span>
           </h1>
+          <div data-gsap="mobile-email" className="md:hidden font-mono text-xs text-body leading-relaxed text-right pb-1">
+            <div>Open to</div>
+            <div>opportunities:</div>
+            <a
+              href="mailto:rasiandre06@gmail.com"
+              className="text-accent hover:underline break-all"
+            >
+              rasiandre06@gmail.com
+            </a>
+          </div>
         </div>
 
         {/* Center: spacer so Spline visible and bio doesn't overlap (mobile); desktop 35vw square */}

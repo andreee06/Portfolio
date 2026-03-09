@@ -3,7 +3,7 @@
 import { useEffect } from 'react'
 import Spline from '@splinetool/react-spline/next'
 
-export function HeroCanvas() {
+export function HeroCanvas({ onLoad }: { onLoad?: () => void }) {
   useEffect(() => {
     const observer = new MutationObserver(() => {
       // Target the Spline watermark button that is injected dynamically
@@ -37,6 +37,7 @@ export function HeroCanvas() {
     >
       <Spline
         scene="https://prod.spline.design/5-Cv3fBqf9lox3Aw/scene.splinecode"
+        onLoad={onLoad}
         style={{ width: '100%', height: '100%' }}
       />
       <div
